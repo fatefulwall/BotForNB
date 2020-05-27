@@ -4,13 +4,13 @@ import time
 import discord
 import asyncio
 
-def getToken():     # reads function that is stored in text file
+def getToken():     # reads token that is stored in a text file
     with open('token.txt') as f:
         return f.read()
 
 token = getToken()  # token var
 
-client = discord.Client()
+client = discord.Client() # client object
 
 
 
@@ -18,9 +18,9 @@ client = discord.Client()
 async def on_message(message):       # scans for messages
 
     if message.content.find("show me the history") != -1:
-        l = open('logs.txt', 'w')
+        l = open('logs.txt', 'w')  # text file where logs are written to
 
-        messages = await message.channel.history().flatten()
+        messages = await message.channel.history().flatten() # stores all past messages in an array
         for message in messages:
             logsource = str(message)
             l.write(logsource)
